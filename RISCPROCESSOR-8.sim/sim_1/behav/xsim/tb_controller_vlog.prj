@@ -1,0 +1,13 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../../Downloads/Control_Unit.v" \
+"../../../../../../../Downloads/controller.v" \
+"../../../../../../../Downloads/instruction_register.v" \
+"../../../../../../../Downloads/program_counter.v" \
+"../../../../../RISCPROCESSOR_7/RISCPROCESSOR_7/RISCPROCESSOR_7.srcs/sim_1/new/tb_controller.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

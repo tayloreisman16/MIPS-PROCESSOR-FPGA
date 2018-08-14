@@ -1,0 +1,275 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Mon Aug 13 21:12:38 2018
+# Process ID: 2272
+# Current directory: C:/Users/bup48/Documents/VivadoProjects/RISCPROCESSOR-8/RISCPROCESSOR-8.runs/synth_1
+# Command line: vivado.exe -log Memorypath.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Memorypath.tcl
+# Log file: C:/Users/bup48/Documents/VivadoProjects/RISCPROCESSOR-8/RISCPROCESSOR-8.runs/synth_1/Memorypath.vds
+# Journal file: C:/Users/bup48/Documents/VivadoProjects/RISCPROCESSOR-8/RISCPROCESSOR-8.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Memorypath.tcl -notrace
+Command: synth_design -top Memorypath -part xczu7ev-ffvc1156-2-e
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xczu7ev'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 17036 
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 357.277 ; gain = 98.629
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Memorypath' [C:/Users/bup48/Downloads/Memorypath.v:3]
+INFO: [Synth 8-6157] synthesizing module 'MUX2x1' [C:/Users/bup48/Downloads/MUX.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'MUX2x1' (1#1) [C:/Users/bup48/Downloads/MUX.v:3]
+INFO: [Synth 8-6157] synthesizing module 'data_memory' [C:/Users/bup48/Downloads/data_memory.v:3]
+INFO: [Synth 8-5534] Detected attribute (* dont_touch = "true" *) [C:/Users/bup48/Downloads/data_memory.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'data_memory' (2#1) [C:/Users/bup48/Downloads/data_memory.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'Memorypath' (3#1) [C:/Users/bup48/Downloads/Memorypath.v:3]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.633 ; gain = 152.984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.633 ; gain = 152.984
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xczu7ev-ffvc1156-2-e
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 411.633 ; gain = 152.984
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xczu7ev-ffvc1156-2-e
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 411.633 ; gain = 152.984
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---RAMs : 
+	               4K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module MUX2x1 
+Detailed RTL Component Info : 
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+Module data_memory 
+Detailed RTL Component Info : 
++---Registers : 
+	               16 Bit    Registers := 1     
++---RAMs : 
+	               4K Bit         RAMs := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 1728 (col length:144)
+BRAMs: 624 (col length: RAMB18 144 RAMB36 72)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Preliminary Mapping  Report (see note below)
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name  | RTL Object   | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|data_memory: | data_mem_reg | 256 x 16(READ_FIRST)   | W |   | 256 x 16(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+Note: The tale above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance i_0/MP2/data_mem_reg_bram_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|Module Name  | RTL Object   | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | Cascade Heights | 
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+|data_memory: | data_mem_reg | 256 x 16(READ_FIRST)   | W |   | 256 x 16(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      |                 | 
++-------------+--------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-4480] The timing for the instance MP2/data_mem_reg_bram_0 (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     2|
+|2     |LUT3     |     8|
+|3     |RAMB18E2 |     1|
+|4     |IBUF     |    35|
+|5     |OBUF     |    16|
++------+---------+------+
+
+Report Instance Areas: 
++------+---------+------------+------+
+|      |Instance |Module      |Cells |
++------+---------+------------+------+
+|1     |top      |            |    62|
+|2     |  MP1    |MUX2x1      |     8|
+|3     |  MP2    |data_memory |     1|
++------+---------+------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+Synthesis Optimization Complete : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 1448.598 ; gain = 1189.949
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 37 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 37 instances were transformed.
+  BUFG => BUFGCE: 2 instances
+  IBUF => IBUF (IBUFCTRL, INBUF): 35 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+18 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 1448.598 ; gain = 1202.957
+INFO: [Common 17-1381] The checkpoint 'C:/Users/bup48/Documents/VivadoProjects/RISCPROCESSOR-8/RISCPROCESSOR-8.runs/synth_1/Memorypath.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Memorypath_utilization_synth.rpt -pb Memorypath_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.129 . Memory (MB): peak = 1448.598 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 13 21:12:58 2018...
