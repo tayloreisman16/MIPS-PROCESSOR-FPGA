@@ -24,7 +24,7 @@ module Datapath(
     input [15:0] R_data,
     input [7:0] RF_W_data,
     input RF_s1,
-    input twittRF_s0,
+    input RF_s0,
     input [3:0] RF_W_addr,
     input W_wr,
     input [3:0] RF_Rp_addr,

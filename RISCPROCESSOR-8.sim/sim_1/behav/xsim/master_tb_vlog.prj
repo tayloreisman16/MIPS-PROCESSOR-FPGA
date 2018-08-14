@@ -1,18 +1,18 @@
 # compile verilog/system verilog design source files
 verilog xil_defaultlib  \
-"../../../../../../../Downloads/Control_Unit.v" \
-"../../../../../../../Downloads/Datapath.v" \
-"../../../../../../../Downloads/MUX.v" \
-"../../../../../../../Downloads/MUX3x1.v" \
-"../../../../../../../Downloads/Memorypath.v" \
-"../../../../../../../Downloads/RF16x16.v" \
-"../../../../../../../Downloads/alu.v" \
-"../../../../../../../Downloads/controller.v" \
-"../../../../../../../Downloads/data_memory.v" \
-"../../../../../../../Downloads/instruction_register.v" \
-"../../../../../../../Downloads/master.v" \
-"../../../../../../../Downloads/program_counter.v" \
-"../../../../../../../Downloads/master_tb.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/Control_Unit.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/Datapath.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/MUX.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/MUX3x1.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/Memorypath.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/RF16x16.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/alu.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/controller.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/data_memory.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/instruction_register.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/master.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/program_counter.v" \
+"../../../../RISCPROCESSOR-8.srcs/sources_1/imports/Downloads/master_tb.v" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"
