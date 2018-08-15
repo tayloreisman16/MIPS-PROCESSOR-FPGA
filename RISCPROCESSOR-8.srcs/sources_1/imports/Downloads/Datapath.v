@@ -32,6 +32,7 @@ module Datapath(
     input [3:0] RF_Rq_addr,
     input Rq_rd,
     input [2:0] alu_s,
+    output Rp_ready,
     output [15:0] W_data
     );
     
@@ -39,12 +40,13 @@ module Datapath(
     wire [15:0] MUX2RF;
     wire [15:0] Rq_data;
     wire [15:0] Rp_data;
+    wire alu_done;
     
     assign W_data = Rp_data;
     
     MUX3x1 DP1(RF_s1, RF_s0, RF_W_data, R_data, ALU_out, MUX2RF);
-    RF16x16 DP2(RF_W_addr, W_wr, RF_Rp_addr, Rp_rd, RF_Rq_addr, Rq_rd, MUX2RF, Rp_data, Rq_data);
-    ALU DP3(Rp_data, Rq_data, alu_s, ALU_out);
+    RF16x16 DP2(RF_W_addr, W_wr, alu_done, RF_Rp_addr, Rp_rd, RF_Rq_addr, Rq_rd, MUX2RF, Rp_data, Rp_ready, Rq_data);
+    ALU DP3(Rp_data, Rq_data, alu_s, alu_done, ALU_out);
     
     
 endmodule

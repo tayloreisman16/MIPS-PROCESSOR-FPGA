@@ -19,8 +19,6 @@ always@(IR)
                 $display("*CONT MESSAGE* ADD");
                 
                 //To Datapath: RF16x16
-                RF_W_addr = IR[11:8];
-                W_wr = 1'b1;
                 RF_Rp_addr = IR[7:4];
                 Rp_rd = 1'b1;
                 RF_Rq_addr = IR[3:0];
@@ -46,7 +44,9 @@ always@(IR)
                 IR_ld = 1'b0;
                 
                 //Internal to PC
-                PC_inc = 1'b1;      
+                PC_inc = 1'b1;     
+                RF_W_addr = IR[11:8];
+                W_wr = 1'b1; 
                 $display("*CONT MESSAGE* RF_W_data: %b, RF_s1: %b, RF_s0: %b, RF_W_addr: %b, W_wr: %b, IR_ld: %b, PC_inc: %b", RF_W_data, RF_s1, RF_s0, RF_W_addr, W_wr, IR_ld, PC_inc);  
             end
             1: begin        //SUB: Rd=Rs+Rt
@@ -357,8 +357,8 @@ always@(IR)
                   
                 //To Datapath: 3x1 MUX
                 RF_W_data = IR[7:0];
-                RF_s1 = 1'b1;
-                RF_s0 = 1'b0;
+                RF_s1 = 1'b0;
+                RF_s0 = 1'b1;
                 
                 //Internal to IR  
                 IR_ld = 1'b0;
@@ -394,7 +394,7 @@ always@(IR)
                 
                 //To Datapath: 3x1 MUX
                 RF_W_data = IR[7:0];
-                RF_s1 = 1'b1;
+                RF_s1 = 1'b0;
                 RF_s0 = 1'b0;
                 
                 //Internal to IR 
@@ -403,7 +403,7 @@ always@(IR)
                 //Internal to PC
                 PC_inc = 1'b1; 
                 
-                $display("*CONT MESSAGE* RF_W_data: %b, RF_s1: %b, RF_s0: %b, RF_W_addr: %b, W_wr: %b, IR_ld: %b, PC_inc: %b", RF_W_data, RF_s1, RF_s0, RF_W_addr, W_wr, IR_ld, PC_inc);
+                $display("*CONT MESSAGE* *SW* RF_Rp_addr: %b, Rp_rd: %b, W_wr: %b, IR_ld: %b, PC_inc: %b", RF_Rp_addr, Rp_rd, W_wr, IR_ld, PC_inc);
 
             end
             default: begin
@@ -442,7 +442,17 @@ always@(IR)
                 PC_inc = 1'b0; 
                 $display("*CONT MESSAGE* RF_W_data: %b, RF_s1: %b, RF_s0: %b, RF_W_addr: %b, W_wr: %b, IR_ld: %b, PC_inc: %b", RF_W_data, RF_s1, RF_s0, RF_W_addr, W_wr, IR_ld, PC_inc);
             end
-            endcase//opcode             
+            endcase//opcode
+            #20;
+            RF_W_addr = 4'b0000;
+            RF_Rp_addr = 4'b0000;
+            RF_Rq_addr = 4'b0000;
+            D_rd = 1'b0;
+            D_wr = 1'b0;
+            Rp_rd = 1'b0;
+            Rq_rd = 1'b0;
+            W_wr = 1'b0;
         end//always
+
     endmodule
     

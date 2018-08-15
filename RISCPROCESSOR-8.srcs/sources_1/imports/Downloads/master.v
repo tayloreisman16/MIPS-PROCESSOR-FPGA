@@ -10,10 +10,12 @@ module master(
     output [3:0] OP_Code,
     output reg [7:0]SSEG_CA,
     output reg [7:0]SSEG_AN,
-    output reg [15:0]LED,
-	 output reg [3:0]State		//temp
+    output reg [15:0]LED, 
+    output wire [15:0] data_out_201, data_out_202, data_out_203,
+	output reg [3:0]State		//temp
 );
     (* dont_touch = "true" *)wire [15:0] DATA2MEM;
+    (* dont_touch = "true" *)wire [15:0] MEM2DATA;
     //(* dont_touch = "true" *)reg [3:0]State; //for multiplexing
     (* dont_touch = "true" *)reg [3:0]State1, State3, State4, State5, State6;
     (* dont_touch = "true" *)reg Clk_Slow;   //name of clk for SSEG
@@ -39,8 +41,10 @@ module master(
     (* dont_touch = "true" *)wire Rp_rd;
     (* dont_touch = "true" *)wire Rq_rd;
     (* dont_touch = "true" *)wire [2:0] alu_s;
+    (* dont_touch = "true" *)wire Rp_ready;
     (* dont_touch = "true" *)reg [15:0] R_terminal;
     (* dont_touch = "true" *)reg term_en;
+    
     
     //Datapath & Mempath Wires
 //    (* dont_touch = "true" *)wire [15:0] W_data;
@@ -48,6 +52,7 @@ module master(
     
 //    assign RF_W_data = {{8{RF_W_data[7]}}, RF_W_data};
     assign DATA2MEM = W_data;
+    assign MEM2DATA = R_data;
     
     always @(*) begin
         //R_terminal = op_in;
@@ -670,10 +675,14 @@ end//always Clk_Slow
         D_rd,
         D_wr,
         DATA2MEM,
-        R_data);
+        Rp_ready,
+        R_data,
+        data_out_201, 
+        data_out_202, 
+        data_out_203);
         
     Datapath M3(
-        R_data,
+        MEM2DATA,
         RF_W_data,
         RF_s1,
         RF_s0,
@@ -684,6 +693,8 @@ end//always Clk_Slow
         RF_Rq_addr,
         Rq_rd,
         alu_s,
+        Rp_ready,
         W_data);
+        
         
 endmodule

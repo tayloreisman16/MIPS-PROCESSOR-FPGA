@@ -3,12 +3,14 @@
 module RF16x16(
     input [3:0] W_addr,
     input W_wr,
+    input alu_done,
     input [3:0] Rp_addr,
     input Rp_rd,
     input [3:0] Rq_addr,
     input Rq_rd,
     input [15:0] W_data,
     output reg [15:0] Rp_data,
+    output reg Rp_ready,
     output reg [15:0] Rq_data
     );
     
@@ -31,18 +33,29 @@ module RF16x16(
         mem[13] = 16'h0000;
         mem[14] = 16'h0000;
         mem[15] = 16'h0000;
+        Rp_data = 16'h0000;
+        Rq_data = 16'h0000;
+        Rp_ready = 1'b0;
+    end
+
+    always@(posedge W_wr or W_data or alu_done) begin
+        if(W_wr) begin
+            $display("*RF MESSAGE* Writing [%d] to register [%d]!", W_data, W_addr);
+            mem[W_addr] = W_data;
+        end
+    end
+    
+    always@(posedge Rp_rd or Rp_addr) begin
+        if (Rp_rd) begin
+            Rp_data = mem[Rp_addr];
+            $display("*RF MESSAGE* Reading [%d] from register [%d] to Rp!", Rp_data, Rp_addr);
+            Rp_ready = 1'b1;
+        end else begin
+            Rp_ready = 1'b0;
+            Rp_data = Rp_data;
+        end
     end
         
-    always@(posedge W_wr) begin
-        $display("*RF MESSAGE* Writing [%d] to register [%d]!", W_data, W_addr);
-        mem[W_addr] = W_data;
-    end
-    
-    always@(posedge Rp_rd) begin
-        Rp_data = mem[Rp_addr];
-        $display("*RF MESSAGE* Reading [%d] from register [%d] to Rp!", Rp_data, Rp_addr);
-    end
-    
     always@(posedge Rq_rd) begin
         Rq_data = mem[Rq_addr];
         $display("*RF MESSAGE* Reading [%d] from register [%d] to Rq!", Rq_data, Rq_addr);

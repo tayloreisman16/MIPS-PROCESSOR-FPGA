@@ -12,6 +12,7 @@ module instruction_register(
     
     always @(IR) begin
             $display("*IR MESSAGE* Loading R_terminal into Controller: %b, OP_enable: %b, OP_in: %h", IR, op_en, op_in);
+            $display("*IR MESSAGE* R_DATA CHECK! %h", R_data);
         end
 
         

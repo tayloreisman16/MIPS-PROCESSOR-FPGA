@@ -5,14 +5,19 @@ module data_memory(
     input D_rd,
     input D_wr,
     input [15:0] W_data,
-    output reg [15:0] R_data
+    input Rp_ready,
+    output reg [15:0] R_data,
+    output [15:0] data_out_201, 
+    output [15:0] data_out_202, 
+    output [15:0] data_out_203
     );
     
     (* dont_touch = "true" *)reg [15:0] data_mem [0 : 255];
     
     initial begin
-    data_mem[201] = 16'd5;
+    data_mem[201] = 16'd432;
     data_mem[202] = 16'd20;
+    data_mem[203] = 16'd0;
     data_mem[0] = 16'b1001011011001010; //LW 6 202
     data_mem[1] = 16'b0000011101010110; //Add 7 5 6
     data_mem[2] = 16'b1010011111001011; // SW A 7 203
@@ -24,15 +29,22 @@ module data_memory(
     data_mem[8] = 16'b1010001011001101; //SW 2 205
     end
     
+    assign data_out_201 = data_mem[201];
+    assign data_out_202 = data_mem[202];
+    assign data_out_203 = data_mem[203];
+    
     always@(posedge D_rd) begin
         R_data = data_mem[addr];
-        $display("*MEM MESSAGE* Reading data from Memory Address [%d]!", addr);
+        $display("*MEM MESSAGE* Reading data from Memory Address [%d]! Contents: [%d]", addr, R_data);
     end
     
-    always@(posedge D_wr) begin
-        data_mem[addr] = W_data; 
-        $display("*MEM MESSAGE* Writing Data to Memory Address [%d]!", addr);
+    always@(posedge D_wr or Rp_ready) begin
+        data_mem[addr] = W_data;
+        $display("*MEM MESSAGE* Rp_ready: %b", Rp_ready); 
+        $display("*MEM MESSAGE* Writing Data to Memory Address [%d]! Contents: [%d]", addr, W_data);
     end
+    
+
     
 //    always@(D_rd or D_wr or W_data or R_data or addr) begin
 //        $display("MEM Addr: %d", addr);

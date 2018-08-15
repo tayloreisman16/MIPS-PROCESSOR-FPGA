@@ -1,26 +1,5 @@
 `timescale 1ns / 1ps
 
-////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:
-//
-// Create Date:   18:11:18 08/13/2018
-// Design Name:   master
-// Module Name:   C:/Xilinx/FPGA_HDL/Final_RISC/master_tb.v
-// Project Name:  Final_RISC
-// Target Device:  
-// Tool versions:  
-// Description: 
-//
-// Verilog Test Fixture created by ISE for module: master
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-////////////////////////////////////////////////////////////////////////////////
 
 module master_tb;
 
@@ -36,7 +15,7 @@ module master_tb;
 	wire [3:0] OP_Code;
 	wire [7:0] SSEG_CA;
 	wire [7:0] SSEG_AN;
-	wire [15:0] LED;
+	wire [15:0] LED, data_out_201, data_out_202, data_out_203;
 	wire [3:0] State; 	//temp
 
 	// Instantiate the Unit Under Test (UUT)
@@ -51,6 +30,9 @@ module master_tb;
 		.SSEG_CA(SSEG_CA), 
 		.SSEG_AN(SSEG_AN), 
 		.LED(LED),
+		.data_out_201(data_out_201),
+		.data_out_202(data_out_202), 
+		.data_out_203(data_out_203),
 		.State(State)		//temp
 	);
 
@@ -58,15 +40,24 @@ module master_tb;
 		// Initialize Inputs
 		clk = 0; op_en = 1;
 		btn = 2;
-		
+		op_in = 16'b1001010111001001; //LW 5 201
+		#200;
 		op_in = 16'b1001010111001001; //LW 5 201
 		#200;
 		op_in = 16'b1001011011001010; //LW 6 202;
 		#200;
+        op_in = 16'b1001011011001010; //LW 6 202;
+		#200;
 		op_in = 16'b0000011101010110; //Add 7 5 6
 		#200;
+		op_in = 16'b0000011101010110; //Add 7 5 6
+        #200;
 		op_in = 16'b1010011111001011; // SW A 7 203
 		#200;
+		op_in = 16'b1010011111001011; // SW A 7 203
+        #200;
+        op_in = 16'b1010011111001011; // SW A 7 203
+        #200;
 		op_in = 16'b1000100011111010; // LI 8 250
 		#200;
 		op_in = 16'b0001010010000101; //SUB 4 8 5
